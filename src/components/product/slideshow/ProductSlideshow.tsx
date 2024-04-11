@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { CSSProperties, useState } from 'react';
 import Image from 'next/image';
 import { Swiper as SwiperObject } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -27,7 +27,7 @@ export function ProductSlideshow({ images, title, className }: Props) {
                 style={{
                     '--swiper-navigation-color': '#fff',
                     '--swiper-pagination-color': '#fff',
-                }}
+                } as CSSProperties}
                 spaceBetween={10}
                 navigation={true}
                 autoplay={{

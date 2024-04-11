@@ -10,22 +10,17 @@ interface Props {
 }
 
 export const Pagination = ({ totalPages }: Props) => {
-
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const pageString = searchParams.get('page') ?? 1;
     let currentPage = isNaN(+pageString) ? 1 : +pageString;
 
-    console.log(currentPage);
     if (currentPage < 0) currentPage = 1;
-    0
     // let currentPage = (
     //     (Number(searchParams.get('page')) === 0 ? 1 : Number(searchParams.get('page')))
     //     ?? 1);
 
     const allPages = generatePaginationNumbers(currentPage, totalPages);
-
-    console.log(allPages);
 
 
 

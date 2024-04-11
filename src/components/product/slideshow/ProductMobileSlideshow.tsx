@@ -22,7 +22,7 @@ export function ProductMobileSlideshow({ images, title, className }: Props) {
         <div className={className}>
             <Swiper
                 style={{
-                    widht: '100vw',
+                    width: '100vw',
                     height: '500px'
                 }}
                 pagination={true}

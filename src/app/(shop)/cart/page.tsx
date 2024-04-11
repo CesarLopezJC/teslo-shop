@@ -14,7 +14,7 @@ const prodcutsInCart = [
     initialData.products[4],
 ]
 
-export default function () {
+export default function Cart() {
     // redirect('/empty')
 
     return (
