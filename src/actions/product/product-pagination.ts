@@ -6,13 +6,13 @@ import { Gender } from "@prisma/client";
 interface PaginateionOption {
     page?: number;
     take?: number;
-    gender?: string;
+    gender?: Gender;
 }
 
 export const getPaginatedProductsWithImages = async ({
     page = 1,
     take = 12,
-    gender = ''
+    gender,
 }: PaginateionOption) => {
 
     if (isNaN(Number(page))) page = 1;
@@ -21,48 +21,31 @@ export const getPaginatedProductsWithImages = async ({
 
 
     try {
-        console.log(gender);
+
         // 1. getting all products
-        const products = gender === '' ?
-            await prisma.product.findMany({
-                take: 12,
-                skip: (page - 1) * take,
-                include: {
-                    ProductImage: {
-                        take: 2,
-                        select: {
-                            url: true,
-                        }
+        const products = await prisma.product.findMany({
+            take: 12,
+            skip: (page - 1) * take,
+            include: {
+                ProductImage: {
+                    take: 2,
+                    select: {
+                        url: true,
                     }
-                },
-            })
-            : //Else
-            await prisma.product.findMany({
-                take: 12,
-                skip: (page - 1) * take,
-                include: {
-                    ProductImage: {
-                        take: 2,
-                        select: {
-                            url: true,
-                        }
-                    }
-                },
-                where: {
-                    gender: gender as Gender
                 }
-            });
+            },
+            where: {
+                gender: gender as Gender
+            }
+        });
+
         //2. Getting the total of pages
         //todo:
-        const tatalCount = gender === '' ?
-            await prisma.product.count({})
-            :
-            await prisma.product.count({
-                where: {
-                    gender: gender as Gender
-                }
-            })
-            ;
+        const tatalCount = await prisma.product.count({
+            where: {
+                gender: gender as Gender
+            }
+        });
 
         const totalPages = Math.ceil(tatalCount / take);
 
