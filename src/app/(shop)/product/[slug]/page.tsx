@@ -95,7 +95,7 @@ export default async function ProductSlug({ params }: Props) {
                 </p>
 
             </div>
-            4
+
         </div>
     );
 }

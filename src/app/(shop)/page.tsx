@@ -14,7 +14,7 @@ interface Props {
 }
 
 export default async function Home({ searchParams }: Props) {
-  console.log(searchParams);
+  //console.log(searchParams);
 
   const page = searchParams?.page ? parseInt(searchParams.page) : 1;
 

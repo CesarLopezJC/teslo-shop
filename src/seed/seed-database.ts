@@ -8,10 +8,21 @@ async function main() {
         await prisma.productImage.deleteMany(),
         await prisma.product.deleteMany(),
         await prisma.category.deleteMany(),
+        await prisma.user.deleteMany(),
     ])
     // console.log(initialData);
 
-    const { categories, products } = initialData;
+    const { categories, products, users } = initialData;
+
+
+
+
+    //insert all images in db
+    await prisma.user.createMany({
+        data: users
+    });
+
+
     // Categories
     // {
     //     name: 'Shirt'

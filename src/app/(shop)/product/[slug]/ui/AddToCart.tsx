@@ -36,7 +36,7 @@ export const AddToCart = ({ product }: Props) => {
         setQuantity(1);
         setSize(undefined);
 
-        console.log({ product, size, quantity });
+        //console.log({ product, size, quantity });
     }
 
     return (
