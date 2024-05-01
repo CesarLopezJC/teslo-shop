@@ -25,8 +25,9 @@ interface State {
 export const useCartStore = create<State>()(
     persist(
 
-        //'set' variable allows us change de state, and "get" variable allows to get data from the store
         (set, get) => ({
+            //'set' variable allows us change de state, and "get" variable allows to get data from the store
+
             cart: [],
 
             // Methods
