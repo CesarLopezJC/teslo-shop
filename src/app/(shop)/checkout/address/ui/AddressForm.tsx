@@ -4,6 +4,7 @@ import { setUserAddress } from '@/actions';
 import type { Address, Coumntry } from '@/interfaces';
 import { useAddressStore } from '@/store';
 import clsx from 'clsx';
+import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
@@ -35,6 +36,11 @@ export default function AddressForm({ countries, userId, userStoredAddress = {} 
         }
     });
 
+    const router = useRouter();
+
+
+
+
     const address = useAddressStore(state => state.address);
     const setAddress = useAddressStore(state => state.setAddress);
 
@@ -49,10 +55,10 @@ export default function AddressForm({ countries, userId, userStoredAddress = {} 
 
     const onSubmit = async (data: FormInputs) => {
 
-        setAddress(data);
-        console.log(data);
 
         const { rememberAddress, ...address } = data;
+        setAddress(address);
+        console.log(address);
 
         console.log(userId);
 
@@ -60,6 +66,7 @@ export default function AddressForm({ countries, userId, userStoredAddress = {} 
             userId ? userId : '',
             rememberAddress ? rememberAddress : false);
 
+        router.push('/checkout');
     }
 
     return (

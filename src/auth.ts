@@ -16,11 +16,12 @@ export const authConfig: NextAuthConfig = {
 
         // Validation with middleware
         authorized({ auth, request: { nextUrl } }) {
-            console.log(auth);
+            // console.log(auth);
             const isLoggedIn = !!auth?.user;
 
 
-            const isOnDashboard = nextUrl.pathname.startsWith('/checkout');
+            const isOnDashboard = nextUrl.pathname.startsWith('/checkout') ||
+                nextUrl.pathname.startsWith('/orders');
             if (isOnDashboard) {
                 if (isLoggedIn) return true;
                 return false; // Redirect unauthenticated users to login page

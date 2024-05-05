@@ -6,6 +6,12 @@ export { }
 
 async function main() {
     await Promise.all([
+
+        //Delete all
+        await prisma.orderItem.deleteMany(),
+        await prisma.orderAddress.deleteMany(),
+        await prisma.order.deleteMany(),
+
         await prisma.productImage.deleteMany(),
         await prisma.product.deleteMany(),
         await prisma.category.deleteMany(),

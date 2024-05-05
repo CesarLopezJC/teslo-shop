@@ -3,7 +3,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { IoChevronBackOutline, IoChevronForwardOutline } from "react-icons/io5";
-import { generatePaginationNumbers } from '../../../utils/generatePaginationNumbers';
+import { generatePaginationNumbers } from '../../../utils';
 
 interface Props {
     totalPages: number;

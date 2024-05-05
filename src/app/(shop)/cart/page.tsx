@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Title } from '../../../components/ui/title/Title';
-import { OrderSummary } from '../product/[slug]/ui/OrderSummary';
+import { OrderSummary } from './ui/OrderSummary';
 import { ProductsInCart } from './ui/ProductsInCart';
 
 export default function Cart() {
