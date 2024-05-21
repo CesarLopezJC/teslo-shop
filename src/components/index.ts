@@ -13,4 +13,9 @@ export { Footer } from './ui/footer/Footer'
 export { Pagination } from './ui/pagination/Pagination'
 export { StockLabel } from './product/stock-label/StockLabel'
 
-export { Provider } from './Provider/Provider'
+export { Providers } from './Providers/Providers'
+
+export { PaypalButton } from './paypal/PaypalButton'
+
+export { OrderStatus } from './orders/OrderStatus'
+

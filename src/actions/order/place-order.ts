@@ -141,10 +141,6 @@ export const placeOrder = async (productIds: productToOrder[], address: Address)
                 }
             });
 
-            console.log({ ordeAddress });
-
-
-
             return {
                 order: order,
                 updatedProduct: updatedProducts,
