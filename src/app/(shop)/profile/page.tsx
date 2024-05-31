@@ -5,10 +5,10 @@ import { redirect } from 'next/navigation';
 export default async function ProfilePage() {
     const session = await auth();
 
-    if (!session?.user) {
-        // redirect('/auth/login?returnTo=/profile');
-        redirect('/auth/login');
-    }
+    // if (!session?.user) {
+    //     // redirect('/auth/login?returnTo=/profile');
+    //     redirect('/auth/login');
+    // }
 
     return (
         <div>
@@ -19,7 +19,7 @@ export default async function ProfilePage() {
                 }
             </pre>
 
-            <h3 className="text-3xl mb-10">{session.user.role}</h3>
+            <h3 className="text-3xl mb-10">{session?.user.role}</h3>
         </div>
     );
 }

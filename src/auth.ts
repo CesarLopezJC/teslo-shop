@@ -21,11 +21,13 @@ export const authConfig: NextAuthConfig = {
 
 
             const isOnDashboard = nextUrl.pathname.startsWith('/checkout') ||
-                nextUrl.pathname.startsWith('/orders');
+                nextUrl.pathname.startsWith('/orders') || nextUrl.pathname.startsWith('/admin')
+                || nextUrl.pathname.startsWith('/profile');
             if (isOnDashboard) {
+                if (nextUrl.pathname.startsWith('/admin') && auth?.user.role != 'admin') return Response.redirect(new URL('/', nextUrl));
                 if (isLoggedIn) return true;
                 return false; // Redirect unauthenticated users to login page
-            } else if (isLoggedIn && nextUrl.pathname.startsWith('/auth')) {
+            } else if (isLoggedIn && (nextUrl.pathname.startsWith('/auth'))) {
                 return Response.redirect(new URL('/', nextUrl));
             }
             return true;

@@ -5,9 +5,9 @@ export default async function ShopLayout({ children }: {
     children: React.ReactNode;
 }) {
 
-    const session = await auth();
+    // const session = await auth();
 
-    if (session?.user) redirect('/');
+    // if (session?.user) redirect('/');
 
     //console.log(session);
 
