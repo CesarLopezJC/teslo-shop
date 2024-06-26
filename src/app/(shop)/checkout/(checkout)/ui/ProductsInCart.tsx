@@ -14,7 +14,7 @@ export const ProductsInCart = () => {
     useEffect(() => {
         setLoading(true);
 
-    });
+    }, []);
 
 
     if (!loading) {

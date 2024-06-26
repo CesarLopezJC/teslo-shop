@@ -10,7 +10,7 @@ export default async function Address() {
 
     if (!session?.user) {
         return (
-            <h3 className='text-5xl'>500 - There isn't a session</h3>
+            <h3 className='text-5xl'>500 - There isn&apos;t a session</h3>
         )
     }
 

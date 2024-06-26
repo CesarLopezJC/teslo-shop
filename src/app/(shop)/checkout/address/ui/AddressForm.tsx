@@ -49,7 +49,7 @@ export default function AddressForm({ countries, userId, userStoredAddress = {} 
             reset(address);
             setLoaded(true);
         }
-    });
+    }, [address, loaded, reset]);
 
 
 

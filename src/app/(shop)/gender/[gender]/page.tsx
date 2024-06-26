@@ -10,7 +10,7 @@ const seedProducts = initialData.products;
 
 interface Props {
     params: {
-        gender: string;
+        gender: Gender;
     },
     searchParams: {
         page?: string;

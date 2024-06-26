@@ -27,7 +27,7 @@ export const PlaceOrder = () => {
     useEffect(() => {
         if (!loaded)
             setLoaded(true);
-    });
+    }, [loaded]);
 
 
     if (!loaded) {
