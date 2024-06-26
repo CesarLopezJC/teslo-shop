@@ -6,6 +6,7 @@ import { getOrderBy } from '@/actions';
 import { auth } from '@/auth';
 import { notFound } from 'next/navigation';
 import { currencyFormat } from '@/utils';
+import { ProductImage } from '../../../../components/product/product-image/ProductImage';
 
 
 
@@ -72,8 +73,8 @@ export default async function OrdersId({ params }: Props) {
                             items!.map(item => (
 
                                 <div key={item.id} className="flex mb-5">
-                                    <Image
-                                        src={`/products/${item.product.ProductImage[0].url}`}
+                                    <ProductImage
+                                        src={`${item.product.ProductImage[0].url}`}
                                         width={100}
                                         height={100}
                                         style={{

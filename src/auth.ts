@@ -24,7 +24,11 @@ export const authConfig: NextAuthConfig = {
                 nextUrl.pathname.startsWith('/orders') || nextUrl.pathname.startsWith('/admin')
                 || nextUrl.pathname.startsWith('/profile');
             if (isOnDashboard) {
-                if (nextUrl.pathname.startsWith('/admin') && auth?.user.role != 'admin') return Response.redirect(new URL('/', nextUrl));
+                if (nextUrl.pathname.startsWith('/admin') && auth?.user.role != 'admin') {
+                    if (isLoggedIn) return Response.redirect(new URL('/', nextUrl));
+                    return false;
+                }
+
                 if (isLoggedIn) return true;
                 return false; // Redirect unauthenticated users to login page
             } else if (isLoggedIn && (nextUrl.pathname.startsWith('/auth'))) {

@@ -1,3 +1,4 @@
+import { ProductImage } from './product/product-image/ProductImage';
 export * from './ui/top-menu/TopMenu'
 export * from './ui/not-found/PageNotFound'
 export * from './ui/title/Title'
@@ -18,4 +19,6 @@ export { Providers } from './Providers/Providers'
 export { PaypalButton } from './paypal/PaypalButton'
 
 export { OrderStatus } from './orders/OrderStatus'
+
+export { ProductImage } from './product/product-image/ProductImage'
 

@@ -5,6 +5,7 @@ import { currencyFormat } from '@/utils';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
+import { ProductImage } from '../../../../../components/product/product-image/ProductImage';
 
 export const ProductsInCart = () => {
     const [loading, setLoading] = useState(false);
@@ -28,8 +29,8 @@ export const ProductsInCart = () => {
             {
                 prodcutsInCart.map(product => (
                     <div key={`${product.slug}-${product.size}`} className=' flex mb-4' >
-                        < Image
-                            src={`/products/${product.image}`}
+                        <ProductImage
+                            src={`${product.image}`}
                             alt={product.title}
                             width={100}
                             height={100}

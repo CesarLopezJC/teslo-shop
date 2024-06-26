@@ -13,5 +13,9 @@ export { getOrderBy } from './order/get-order-by'
 export { getOrdersByUser } from './order/get-orders-by-user'
 export { setTransactionId } from './payments/set-transactionid'
 export { paypalCheckPayment } from './payments/paypal-check-payment'
-
-
+export { getPaginatedOrders } from './order/get-paginated-orders'
+export { getPaginatedUsers } from './users/get-paginated-users'
+export { changeUserRole } from './users/change-user-role'
+export { getCategories } from './product/get-categories'
+export { createUpdateProduct } from './product/create-update-product'
+export { deleteProductImage } from './product/delete-product-image'
