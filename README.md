@@ -25,4 +25,3 @@ npm run seed
 npm run dev
 ```
 
-## Diploy in production

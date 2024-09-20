@@ -6,8 +6,10 @@ import { Category, Product, ProductImage } from "@/interfaces";
 import clsx from "clsx";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { deleteProductImage } from '../../../../../../actions/product/delete-product-image';
+import { ProductImageSkeleton } from '../../../../../../components/product/product-image/ProductImageSkeleton';
 
 interface Props {
     product: Partial<Product> & { ProductImage?: ProductImage[] };
@@ -32,6 +34,8 @@ interface FormInputs {
 }
 
 export const ProductForm = ({ product, categories }: Props) => {
+
+    const [isWorking, setIsWorking] = useState(false);
 
     const router = useRouter();
 
@@ -96,6 +100,11 @@ export const ProductForm = ({ product, categories }: Props) => {
         ) {
             for (let i = 0; i < images.length; i++) {
                 formData.append('images', images[i]);
+            }
+
+            if (images.length == 0 && !product.id) {
+                alert(`Could not ${product.id ? 'update' : 'create'} the product, It is necessary adding a image of the product`);
+                return;
             }
         }
         console.log(images);
@@ -190,7 +199,10 @@ export const ProductForm = ({ product, categories }: Props) => {
                     </select>
                 </div>
 
-                <button className="btn-primary w-full">
+                <button
+                    className="btn-primary w-full"
+                    disabled={isWorking}
+                >
                     Save
                 </button>
             </div>
@@ -207,12 +219,13 @@ export const ProductForm = ({ product, categories }: Props) => {
                             sizes.map(size => (
                                 // bg-blue-500 text-white <--- si está seleccionado
                                 <div key={size}
-                                    onClick={() => onSizeChanged(size)}
+                                    onClick={() => !isWorking && onSizeChanged(size)}
                                     className={
                                         clsx(
                                             "p-2 border cursor-pointer rounded-md mr-2 mb-2 w-14 transition-all text-center",
                                             {
-                                                "bg-blue-500 text-white": getValues('sizes').includes(size)
+                                                "bg-blue-500 text-white": !isWorking && getValues('sizes').includes(size),
+                                                "bg-gray-400 text-black": isWorking
                                             }
                                         )
                                     }>
@@ -241,18 +254,20 @@ export const ProductForm = ({ product, categories }: Props) => {
                         {
                             product.ProductImage?.map(image => (
                                 <div key={image.id} className=' shadow-sm'>
-                                    <ProductImageComp
+                                    <ProductImageSkeleton
                                         alt={product.title ?? 'Error'}
                                         src={`${image.url}`}
                                         width={300}
                                         height={300}
                                         className="rounded-t-xl w-full"
+                                        heightSkeleton={155}
                                     />
 
                                     <button
                                         type="button"
                                         className="btn-danger w-full rounded-b-xl"
                                         onClick={() => onDeleteProductImage(image.id)}
+                                        disabled={isWorking}
                                     >
                                         Delete
                                     </button>

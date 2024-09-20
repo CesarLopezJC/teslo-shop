@@ -37,7 +37,7 @@ export default async function Products({ searchParams }: Props) {
             </div>
 
             <div className="mb-10">
-                <table className="min-w-full">
+                <table className="min-w-full md:table-fixed hover:table-fixed">
                     <thead className="bg-gray-200 border-b">
                         <tr>
                             <th scope="col" className="text-sm font-medium text-gray-900 px-6 py-4 text-left">

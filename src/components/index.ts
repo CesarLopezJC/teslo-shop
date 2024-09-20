@@ -21,4 +21,5 @@ export { PaypalButton } from './paypal/PaypalButton'
 export { OrderStatus } from './orders/OrderStatus'
 
 export { ProductImage } from './product/product-image/ProductImage'
+export { ProductImageSkeleton } from './product/product-image/ProductImageSkeleton'
 

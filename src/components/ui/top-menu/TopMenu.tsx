@@ -38,9 +38,9 @@ export const TopMenu = () => {
 
       {/* SEARCH, CART,  MENU */}
       <div className='flex items-center'>
-        <Link href='/search' className='mx-2'>
+        {/* <Link href='/search' className='mx-2'>
           <IoSearchOutline className='w-5 h-5' />
-        </Link>
+        </Link> */}
 
         <Link href={
           loading && totalItems === 0 ?
